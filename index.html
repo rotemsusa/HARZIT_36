@@ -595,11 +595,13 @@ function exportCSV() {
 }
 async function resetAll() {
   if (!confirm('לאפס את כל ההצבעות של כל 76 הדירות? פעולה זו אינה הפיכה.')) return;
+  const adminCode = prompt('הזן קוד מנהל:');
+  if (!adminCode) return;
   showLoading(true);
   try {
     const data = await api('/vote', {
       method: 'POST',
-      body: JSON.stringify({ action: 'resetAll' })
+      body: JSON.stringify({ action: 'resetAll', adminCode: adminCode })
     });
     if (data.success) {
       votes = {};
