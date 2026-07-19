@@ -381,6 +381,7 @@ function pinFail() {
 async function enterApp() {
   document.getElementById('pinScreen').style.display = 'none';
   document.getElementById('appWrap').style.display = 'block';
+  render();
   await refreshVotes();
 }
 
